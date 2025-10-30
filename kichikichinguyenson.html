@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời Tạm Biệt - Kichi Kichi Nguyễn Sơn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .main-logo {
+            max-width: 180px;
+            height: auto;
+            filter: brightness(0) invert(1);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .logo-text {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .stats-banner {
+            background: linear-gradient(90deg, #E53935 0%, #D32F2F 50%, #E53935 100%);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .stats-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .number {
+            font-size: 4em;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .stats-label {
+            font-size: 1.1em;
+            max-width: 250px;
+            text-align: left;
+        }
+
+        .date-range {
+            margin-top: 10px;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 50px 40px;
+            background: #fafafa;
+        }
+
+        .section {
+            background: white;
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            animation: slideIn 0.8s ease-out;
+            border-left: 5px solid #E53935;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section h2 {
+            color: #C62828;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .section p {
+            color: #424242;
+            font-size: 1.05em;
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .team-card {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #E53935;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(229, 57, 53, 0.15);
+        }
+
+        .team-card h3 {
+            color: #C62828;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .team-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .team-card li {
+            padding: 10px 0;
+            color: #555;
+            font-size: 1.02em;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .team-card li:last-child {
+            border-bottom: none;
+        }
+
+        .team-card li strong {
+            color: #E53935;
+            font-weight: 600;
+        }
+
+        .apology-section {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            padding: 35px;
+            border-radius: 12px;
+            border: 2px solid #E53935;
+            margin-top: 25px;
+        }
+
+        .apology-section p {
+            color: #424242;
+            line-height: 1.8;
+        }
+
+        .apology-section p strong {
+            color: #C62828;
+        }
+
+        .quote-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border-left: 6px solid #E53935;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            font-style: italic;
+            color: #616161;
+            font-size: 1.15em;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: #E53935;
+            font-weight: 600;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #212121 0%, #424242 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .footer p {
+            margin: 12px 0;
+            font-size: 1.05em;
+        }
+
+        .signature {
+            margin-top: 25px;
+            font-size: 1.4em;
+            font-weight: 300;
+            font-style: italic;
+            color: #E53935;
+        }
+
+        .contact-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(229, 57, 53, 0.1);
+            border-radius: 10px;
+            border: 2px solid #E53935;
+        }
+
+        .contact-label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .email-link {
+            color: #E53935;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            background: #E53935;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+        }
+
+        .ps-note {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #9E9E9E;
+            font-style: italic;
+            color: #757575;
+        }
+
+        .contact-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(229, 57, 53, 0.1);
+            border-radius: 10px;
+            border: 2px solid #E53935;
+        }
+
+        .contact-label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .email-link {
+            color: #E53935;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            background: #E53935;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 35px 25px;
+            }
+
+            .logo-text {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 25px;
+            }
+
+            .section {
+                padding: 25px 20px;
+            }
+
+            .number {
+                font-size: 3em;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #E53935, transparent);
+            margin: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="minh.jpg" alt="Kichi Kichi Logo" class="main-logo">
+
+                </div>
+                <h1 class="logo-text">KICHI KICHI</h1>
+                <p class="subtitle">Lời Tạm Biệt & Cảm Ơn Từ Một Đồng Đội</p>
+            </div>
+        </div>
+
+        <div class="stats-banner">
+            <div class="stats-content">
+                <div class="number" id="workDays">0</div>
+                <div class="stats-label">
+                    <strong>NGÀY LÀM VIỆC</strong><br>
+                    đầy kỷ niệm tại Chi nhánh Nguyễn Sơn
+                    <div class="date-range">03/04/2025 - 31/10/2025</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>
+                    <div class="section-icon">💌</div>
+                    Lời Mở Đầu
+                </h2>
+                <p>
+                    Gửi đến toàn thể gia đình <span class="highlight">Kichi Kichi Nguyễn Sơn</span>,
+                </p>
+                <p>
+                    Sau hơn <strong>7 tháng</strong> gắn bó cùng nhà hàng, đã đến lúc mình phải nói lời tạm biệt.
+                    Thật khó để diễn tả hết những cảm xúc lúc này, nhưng có một điều chắc chắn:
+                    <span class="highlight">mình vô cùng biết ơn vì đã được là một phần của đội ngũ này</span>.
+                </p>
+                <p>
+                    Trang web này là cách mình muốn gửi lời cảm ơn chân thành nhất đến từng người,
+                    đồng thời cũng xin lỗi vì những sai sót mà mình đã mắc phải trong quá trình làm việc.
+                    Mỗi ngày tại Kichi Kichi đều là một bài học quý giá với mình.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>
+                    <div class="section-icon">👨‍🍳</div>
+                    Cảm Ơn Team Bếp
+                </h2>
+                <p>
+                    Team bếp là nơi mình học hỏi được nhiều nhất, cũng là nơi mình gây ra... khá nhiều "sự cố"
+                    (xin lỗi vì những lần làm cháy, đổ đồ và làm chậm tiến độ 😅).
+                </p>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h3>Những Người Đã Dạy Mình Rất Nhiều</h3>
+                        <ul>
+                            <li><strong>Chị Duyên</strong> - Người đã kiên nhẫn chỉ bảo mình từng bước một, dù mình có
+                                hơi "chậm hiểu" đôi khi</li>
+                            <li><strong>Anh Thiện</strong> - Anh luôn bình tĩnh và giúp mình xử lý tình huống khi mọi
+                                thứ trở nên hỗn loạn</li>
+                            <li><strong>Chị Linh</strong> - Chị dạy mình nhiều kỹ năng quan trọng, dù mình cần thời gian
+                                để tiếp thu</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px;">
+                    Cảm ơn vì đã luôn động viên và không bỏ rơi mình, dù có lúc mình làm việc không được hiệu quả.
+                    Những kỹ năng anh chị dạy sẽ luôn đồng hành cùng mình trong hành trình phía trước.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>
+                    <div class="section-icon">✨</div>
+                    Cảm Ơn Team Phục Vụ
+                </h2>
+                <p>
+                    Làm việc cùng team phục vụ luôn tràn đầy năng lượng và tiếng cười.
+                    Cảm ơn vì đã che chở và hỗ trợ mình trong những lúc khó khăn nhất!
+                </p>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h3>Đồng Đội Tuyệt Vời</h3>
+                        <ul>
+                            <li><strong>Quỳnh</strong> - Luôn vui vẻ và giúp mình tự tin hơn khi làm việc</li>
+                            <li><strong>Kiều</strong> - Người bạn đồng hành với những câu chuyện thú vị</li>
+                            <li><strong>Anh An</strong> - Anh luôn support khi mình gặp khó khăn trong giờ cao điểm</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>
+                    <div class="section-icon">🎯</div>
+                    Cảm Ơn Team Quản Lý
+                </h2>
+                <p>
+                    Cảm ơn Ban Quản Lý đã tin tưởng, tạo cơ hội và luôn định hướng đúng đắn cho mình
+                    trong suốt thời gian làm việc tại nhà hàng.
+                </p>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h3>Ban Lãnh Đạo</h3>
+                        <ul>
+                            <li><strong>Chị Dung</strong> - Người đã cho mình cơ hội và luôn động viên trong mọi tình
+                                huống</li>
+                            <li><strong>Chị Trâm</strong> - Chị luôn nhắc nhở mình cẩn thận hơn và chuyên nghiệp hơn
+                            </li>
+                            <li><strong>Anh Quý</strong> - Anh điềm tĩnh xử lý mọi vấn đề, kể cả những lần mình tạo ra
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>
+                    <div class="section-icon">🌱</div>
+                    Gửi Đến Các Thành Viên Mới
+                </h2>
+                <p>
+                    Chúc các bạn nhanh chóng hòa nhập và phát triển trong công việc.
+                    Các bạn sẽ yêu thích môi trường làm việc tại đây!
+                </p>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h3>Thành Viên Mới</h3>
+                        <ul>
+                            <li><strong>Hiển</strong> - Chúc bạn thích nghi nhanh và gặt hái nhiều thành công!</li>
+                            <li><strong>Dương</strong> -Xièxiè nǐ, Yáng, hé nǐ yīqǐ gōngzuò hěn yúkuài!</li>
+                            <li><strong>Anh Phúc</strong> - Anh nhiệt tình và vui tính, bếp cần người như anh!</li>
+                            <li><strong>Anh Dũng</strong> - Cảm ơn anh đã sẵn sàng giúp đỡ em nói riêng và tất cả mọi
+                                người nói chung!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h2>
+                    <div class="section-icon">🙏</div>
+                    Lời Xin Lỗi Chân Thành
+                </h2>
+                <p>
+                    Trong quá trình làm việc, chắc chắn mình đã gây ra không ít phiền toái cho mọi người.
+                    Đây là lời xin lỗi chân thành nhất từ mình:
+                </p>
+
+                <div class="apology-section">
+                    <p>
+                        <strong>Xin lỗi vì những lần mình làm việc chậm trễ</strong>, khiến cả team phải chịu áp lực
+                        trong giờ cao điểm. Mình biết điều đó ảnh hưởng không nhỏ đến tiến độ chung.
+                    </p>
+                    <p>
+                        <strong>Xin lỗi vì những sai sót trong công việc</strong>, khiến anh chị phải làm thêm việc
+                        để sửa chữa và hoàn thiện lại. Mỗi lần như vậy mình đều cảm thấy thật sự hối hận.
+                    </p>
+                    <p>
+                        <strong>Xin lỗi vì những lúc mình "ngơ ngơ"</strong> không biết phải làm gì, khiến
+                        mọi người phải giải thích đi giải thích lại nhiều lần.
+                    </p>
+                    <p>
+                        <strong>Xin lỗi vì có khi mình hơi khăng khăng</strong> với ý kiến của bản thân,
+                        chưa lắng nghe và tiếp thu ý kiến từ những người có kinh nghiệm hơn ngay từ đầu.
+                    </p>
+                    <p style="margin-top: 20px;">
+                        Mặc dù danh sách này có thể còn dài hơn, nhưng <span class="highlight">lòng biết ơn của mình
+                            dành cho mọi người còn lớn hơn gấp nhiều lần</span>. Mỗi lần mắc lỗi là một bài học quý giá,
+                        và quan trọng nhất là mình đã học được cách làm việc nhóm và tinh thần trách nhiệm từ mọi người.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>
+                    <div class="section-icon">🌟</div>
+                    Lời Chúc & Tạm Biệt
+                </h2>
+                <p>
+                    Chúc <span class="highlight">Kichi Kichi Nguyễn Sơn</span> ngày càng phát triển và thu hút
+                    thêm nhiều khách hàng. Chúc team ngày càng gắn kết và đạt được nhiều thành tựu hơn nữa!
+                </p>
+                <p>
+                    Chúc tất cả anh chị em luôn <strong>khỏe mạnh, hạnh phúc và thành công</strong>
+                    trong sự nghiệp. Hy vọng team sẽ có thêm nhiều đồng nghiệp giỏi và chuyên nghiệp
+                    (chắc chắn sẽ tốt hơn mình nhiều! 😄).
+                </p>
+                <p>
+                    Dù mình ra đi, <span class="highlight">những kỷ niệm tại đây sẽ luôn là một phần
+                        đẹp đẽ và ý nghĩa trong cuộc đời mình</span>. Cảm ơn vì đã cho mình cơ hội được
+                    trải nghiệm và trưởng thành!
+                </p>
+
+                <div class="quote-box">
+                    "Có thể mình không phải nhân viên xuất sắc nhất,<br>
+                    nhưng mình chắc chắn là người <span class="highlight">biết ơn nhất</span>!"
+                </div>
+
+                <div class="ps-note">
+                    <p><strong>P/S:</strong></p>
+                    <p>
+                        Nếu sau này anh chị nhớ đến mình, hãy nhớ những lúc vui vẻ cùng nhau nhé.
+                        Còn những lần mình làm hỏng việc thì... cứ để nó theo gió mà bay đi! 😄
+                    </p>
+                    <p style="margin-top: 10px;">
+                        À, và nếu cần một "tấm gương" để... "tránh không làm như thế này"
+                        thì cứ nghĩ đến mình! Mình rất vui lòng làm "gương xấu" để mọi người tham khảo! 😊
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p style="font-size: 1.2em; font-weight: 600;">💌 Gửi đến gia đình Kichi Kichi Nguyễn Sơn 💌</p>
+            <p>Với tình cảm và lòng biết ơn sâu sắc</p>
+            <div class="signature">~ Một đồng đội đã từng ở đây ~</div>
+
+            <div class="contact-section">
+                <p class="contact-label">📧 Nếu có thể em xin giữ liên lạc với mọi người qua:</p>
+                <a href="mailto:nguyentuantuna72@gmail.com" class="email-link">nguyentuantuna72@gmail.com</a>
+            </div>
+
+            <p style="margin-top: 25px; font-size: 0.95em; opacity: 0.85;">
+                Tạm biệt và hẹn gặp lại!<br>
+                🍜 Express • Rotary • Hotpot 🍜
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Hiệu ứng đếm số ngày làm việc
+        function animateCounter(target, duration) {
+            let start = 0;
+            let end = target;
+            let range = end - start;
+            let increment = range / (duration / 16);
+            let current = start;
+
+            let timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                document.getElementById('workDays').textContent = Math.floor(current);
+            }, 16);
+        }
+
+        // 03/04/2025 đến 31/10/2025 = 211 ngày
+        window.addEventListener('load', () => {
+            animateCounter(211, 2500);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
