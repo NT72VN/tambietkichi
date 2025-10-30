@@ -1,0 +1,2 @@
+# tambietkichi
+bye mn
